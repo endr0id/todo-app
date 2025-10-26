@@ -4,6 +4,7 @@ import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
 import tseslint from 'typescript-eslint'
 import { defineConfig, globalIgnores } from 'eslint/config'
+import checkFile from 'eslint-plugin-check-file'
 
 export default defineConfig([
   globalIgnores(['dist']),
@@ -19,5 +20,28 @@ export default defineConfig([
       ecmaVersion: 2020,
       globals: globals.browser,
     },
+    plugins: {
+      'check-file': checkFile
+    },
+    rules: {
+      'check-file/filename-naming-convention': [
+        'error',
+        {
+          'src/**/*.{jsx,tsx}': 'PASCAL_CASE',
+          'src/**/*.{js,ts}': 'CAMEL_CASE'
+        },
+        {
+          // NOTE: ファイル名の中間拡張子を無視 (e.g. App.stories.tsx)
+          ignoreMiddleExtensions: true,
+        },
+      ],
+      'check-file/folder-naming-convention': [
+        'error',
+        {
+          // NOTE: src/内の"__tests__"ディレクトリはディレクトリ命名規則から除く
+          'src/**/!(__tests__)': 'KEBAB_CASE'
+        }
+      ]
+    }
   },
 ])
