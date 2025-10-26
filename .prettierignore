@@ -1,0 +1,10 @@
+# Ignore artifacts:
+node_modules
+build
+coverage
+
+# Ignore all HTML files:
+**/*.html
+
+# 同階層のファイルを無視
+*
