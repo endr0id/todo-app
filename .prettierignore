@@ -4,6 +4,3 @@ node_modules
 
 # Ignore all HTML files:
 **/*.html
-
-# Ignore files at the same level:
-*
