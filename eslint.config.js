@@ -5,6 +5,7 @@ import reactRefresh from 'eslint-plugin-react-refresh'
 import tseslint from 'typescript-eslint'
 import { defineConfig, globalIgnores } from 'eslint/config'
 import checkFile from 'eslint-plugin-check-file'
+import importPlugin from 'eslint-plugin-import'
 
 export default defineConfig([
   globalIgnores(['dist']),
@@ -21,7 +22,8 @@ export default defineConfig([
       globals: globals.browser,
     },
     plugins: {
-      'check-file': checkFile
+      'check-file': checkFile,
+      'import': importPlugin
     },
     rules: {
       'check-file/filename-naming-convention': [
@@ -40,6 +42,18 @@ export default defineConfig([
         {
           // NOTE: src/内の"__tests__"ディレクトリはディレクトリ命名規則から除く
           'src/**/!(__tests__)': 'KEBAB_CASE'
+        }
+      ],
+      'import/no-restricted-paths': [
+        'error',
+        {
+          'zones': [
+            {
+              // NOTE: 共通コンポーネントはどの階層にも依存させない
+              'target': ['./src/components'],
+              'from': ['./src/features']
+            }
+          ]
         }
       ]
     }
