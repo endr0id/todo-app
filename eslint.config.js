@@ -1,15 +1,46 @@
 import js from "@eslint/js";
-import globals from "globals";
-import reactHooks from "eslint-plugin-react-hooks";
-import reactRefresh from "eslint-plugin-react-refresh";
-import tseslint from "typescript-eslint";
 import { defineConfig, globalIgnores } from "eslint/config";
 import eslintConfigPrettier from "eslint-config-prettier/flat";
 import importPlugin from "eslint-plugin-import";
+import reactHooks from "eslint-plugin-react-hooks";
+import reactRefresh from "eslint-plugin-react-refresh";
 import unUsedImports from "eslint-plugin-unused-imports";
+import globals from "globals";
+import tseslint from "typescript-eslint";
 
 export default defineConfig([
   globalIgnores(["dist"]),
+  {
+    plugins: {
+      import: importPlugin,
+    },
+    rules: {
+      "import/order": [
+        "warn",
+        {
+          groups: [
+            "builtin",
+            "external",
+            "internal",
+            ["parent", "sibling"],
+            "index",
+            "type",
+          ],
+          pathGroups: [
+            {
+              pattern: "react",
+              group: "builtin",
+              position: "before",
+            },
+          ],
+          named: true,
+          alphabetize: {
+            order: "asc",
+          },
+        },
+      ],
+    },
+  },
   {
     plugins: {
       "unused-imports": unUsedImports,
@@ -45,35 +76,6 @@ export default defineConfig([
           project: "./tsconfig.json",
         },
       },
-    },
-    plugins: {
-      import: importPlugin,
-    },
-    rules: {
-      "import/order": [
-        "warn",
-        {
-          groups: [
-            "builtin",
-            "external",
-            "internal",
-            ["parent", "sibling"],
-            "index",
-            "type",
-          ],
-          pathGroups: [
-            {
-              pattern: "react",
-              group: "builtin",
-              position: "before",
-            },
-          ],
-          named: true,
-          alphabetize: {
-            order: "asc",
-          },
-        },
-      ],
     },
   },
   eslintConfigPrettier,
