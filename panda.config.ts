@@ -19,7 +19,14 @@ export default defineConfig({
 
   // Useful for theme customization
   theme: {
-    extend: {},
+    extend: {
+      semanticTokens: {
+        colors: {
+          emphasis: { value: "#3d444d" },
+          icon: { value: "#9198a1" },
+        },
+      },
+    },
   },
 
   // The output directory for your css system
