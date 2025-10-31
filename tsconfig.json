@@ -1,17 +1,16 @@
 {
-    "files": [],
-    "references": [
-        { "path": "./tsconfig.app.json" },
-        { "path": "./tsconfig.node.json" }
-    ],
-    "compilerOptions": {
-        "strict": true,
-
-        // Type Checking
-        "noFallthroughCasesInSwitch": true,
-        "allowUnusedLabels": true,
-        "noImplicitReturns": true,
-        "noUnusedLocals": true,
-        "noUnusedParameters": true
-    }
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
+  ],
+  "compilerOptions": {
+    // Type Checking
+    "strict": true,
+    "noFallthroughCasesInSwitch": true,
+    "allowUnusedLabels": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true
+  }
 }
