@@ -1,9 +1,12 @@
 import { createRootRoute } from "@tanstack/react-router";
-import { css } from "../../styled-system/css";
+import ToolBar from "../components/toolbar/ToolBar";
+import Header from "../layouts/header/Header";
 
 const RootLayout = () => (
   <>
-    <div className={css({ fontSize: "2xl" })}>dashboard</div>
+    <Header>
+      <ToolBar />
+    </Header>
   </>
 );
 

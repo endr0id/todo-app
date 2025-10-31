@@ -1,7 +1,6 @@
-import { Bars3Icon, EllipsisHorizontalIcon } from "@heroicons/react/24/outline";
 import Header from "./Header";
 import { css } from "../../../styled-system/css";
-import IconButton from "../button/icon-button/IconButton";
+import ToolBar from "../../components/toolbar/ToolBar";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta = {
@@ -12,24 +11,7 @@ const meta = {
   },
   tags: ["autodocs"],
   args: {
-    children: (
-      <>
-        <IconButton>
-          <Bars3Icon
-            className={css({
-              color: "token(colors.icon)",
-            })}
-          />
-        </IconButton>
-        <IconButton>
-          <EllipsisHorizontalIcon
-            className={css({
-              color: "token(colors.icon)",
-            })}
-          />
-        </IconButton>
-      </>
-    ),
+    children: <ToolBar />,
   },
   decorators: [
     (Story) => (
