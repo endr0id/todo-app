@@ -6,12 +6,14 @@ type IconButtonProps = {
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 const iconButtonRecipe = css({
-  borderColor: "token(colors.emphasis)",
   borderRadius: "md",
-  borderWidth: "2px",
   padding: "2px",
   width: "2rem",
   height: "2rem",
+  cursor: "pointer",
+  _hover: {
+    backgroundColor: "gray.700",
+  },
 });
 
 const IconButton = ({ children, onClick, ...props }: IconButtonProps) => {
