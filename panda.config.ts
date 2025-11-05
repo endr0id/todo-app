@@ -24,6 +24,7 @@ export default defineConfig({
         colors: {
           emphasis: { value: "#3d444d" },
           icon: { value: "#9198a1" },
+          hover: { value: "rgba(101, 108, 118, 0.2)" },
         },
       },
     },
