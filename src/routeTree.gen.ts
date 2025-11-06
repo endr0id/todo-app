@@ -8,28 +8,52 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-import { Route as rootRouteImport } from './routes/__root'
+import { Route as rootRouteImport } from "./routes/__root";
+import { Route as BacklogIndexRouteImport } from "./routes/backlog/index";
 
-export interface FileRoutesByFullPath {}
-export interface FileRoutesByTo {}
+const BacklogIndexRoute = BacklogIndexRouteImport.update({
+  id: "/backlog/",
+  path: "/backlog/",
+  getParentRoute: () => rootRouteImport,
+} as any);
+
+export interface FileRoutesByFullPath {
+  "/backlog": typeof BacklogIndexRoute;
+}
+export interface FileRoutesByTo {
+  "/backlog": typeof BacklogIndexRoute;
+}
 export interface FileRoutesById {
-  __root__: typeof rootRouteImport
+  __root__: typeof rootRouteImport;
+  "/backlog/": typeof BacklogIndexRoute;
 }
 export interface FileRouteTypes {
-  fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: never
-  fileRoutesByTo: FileRoutesByTo
-  to: never
-  id: '__root__'
-  fileRoutesById: FileRoutesById
+  fileRoutesByFullPath: FileRoutesByFullPath;
+  fullPaths: "/backlog";
+  fileRoutesByTo: FileRoutesByTo;
+  to: "/backlog";
+  id: "__root__" | "/backlog/";
+  fileRoutesById: FileRoutesById;
 }
-export interface RootRouteChildren {}
-
-declare module '@tanstack/react-router' {
-  interface FileRoutesByPath {}
+export interface RootRouteChildren {
+  BacklogIndexRoute: typeof BacklogIndexRoute;
 }
 
-const rootRouteChildren: RootRouteChildren = {}
+declare module "@tanstack/react-router" {
+  interface FileRoutesByPath {
+    "/backlog/": {
+      id: "/backlog/";
+      path: "/backlog";
+      fullPath: "/backlog";
+      preLoaderRoute: typeof BacklogIndexRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
+  }
+}
+
+const rootRouteChildren: RootRouteChildren = {
+  BacklogIndexRoute: BacklogIndexRoute,
+};
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
-  ._addFileTypes<FileRouteTypes>()
+  ._addFileTypes<FileRouteTypes>();
