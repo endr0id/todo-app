@@ -1,20 +1,30 @@
--- Columns table
-CREATE TABLE columns (
-    id SERIAL PRIMARY KEY,
+-- ======================================
+-- 1. columns テーブル
+-- ======================================
+CREATE TABLE IF NOT EXISTS columns (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
     description TEXT,
-    position INTEGER NOT NULL,
-    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+    position INT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
--- Issues table
-CREATE TABLE issues (
-    id SERIAL PRIMARY KEY,
-    column_id INTEGER NOT NULL REFERENCES columns(id) ON DELETE CASCADE,
+-- デフォルト列の挿入（冪等性を保つ）
+INSERT IGNORE INTO columns (title, description, position) VALUES
+    ('TODO', 'Default column', 1),
+    ('In Progress', 'Default column', 2),
+    ('Done', 'Default column', 3);
+
+-- ======================================
+-- 2. issues テーブル
+-- ======================================
+CREATE TABLE IF NOT EXISTS issues (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    column_id BIGINT NOT NULL,
     title VARCHAR(255) NOT NULL,
     description TEXT,
-    position INTEGER NOT NULL,
-    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (column_id) REFERENCES columns(id) ON DELETE CASCADE
 );
