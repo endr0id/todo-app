@@ -1,3 +1,13 @@
 spring:
-  application:
-    name: todo
+    datasource:
+        url: jdbc:mysql://localhost:3306/todo?serverTimezone=Asia/Tokyo
+        username: root
+        password: password
+        driver-class-name: com.mysql.cj.jdbc.Driver
+
+    jooq:
+        sql-dialect: MYSQL
+
+logging:
+    level:
+        org.jooq.tools.LoggerListener: info
