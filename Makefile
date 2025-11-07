@@ -1,5 +1,5 @@
 db:
-	cd docker/db && docker compose up -d
+	cd docker && docker compose up -d
 
 	# DB 起動待ち
 	until docker exec todo_db mysqladmin ping --silent; do \
@@ -8,7 +8,7 @@ db:
 	done
 
 down:
-	cd docker/db && docker compose down
+	cd docker && docker compose down
 
 boot:
 	make db
