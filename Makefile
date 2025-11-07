@@ -35,3 +35,8 @@ code-gen-api:
 		--global-property=apis \
 		--additional-properties=useSpringBoot3=true,interfaceOnly=true,reactive=false,skipDefaultInterface=true \
 		--api-package=com.example.todo.generated.api \
+		--model-package=com.example.todo.generated.model
+
+code-gen:
+	make code-gen-model
+	make code-gen-api
