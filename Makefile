@@ -16,14 +16,12 @@ boot:
 	make db
 	cd backend/todo && ./gradlew bootRun
 
-code-gen:
+code-gen-model:
 	docker compose -f $(COMPOSE_FILE) run --rm openapi-generator \
 		generate \
+		-g kotlin \
 		-i /generator/openapi.yml \
-		-o /local/backend \
-		-g kotlin-spring \
-		--skip-overwrite \
-		--additional-properties=interfaceOnly=true,skipDefaultInterface=false,useSpringBoot3=true \
-		--api-package com.example.todo.generated.api \
-		--model-package com.example.todo.generated.model
-		
+		-o /local/backend/ \
+		--global-property=models \
+		--additional-properties=dataClasses=true,serializationLibrary=jackson \
+		--model-package=com.example.todo.generated.model

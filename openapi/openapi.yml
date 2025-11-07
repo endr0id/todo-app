@@ -21,20 +21,23 @@ paths:
                             schema:
                                 type: array
                                 items:
-                                    $ref: "#/components/schemas/Backlog"
+                                    $ref: "#/components/schemas/BacklogResponse"
 components:
     schemas:
-        Backlog:
+        BacklogResponse:
             type: object
             properties:
                 id:
                     type: integer
                 title:
                     type: string
+                    description: カラムタイトル
                 description:
                     type: string
+                    description: カラムの説明
                 position:
                     type: integer
+                    description: カラムの並び順
             required:
                 - id
                 - title
