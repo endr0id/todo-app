@@ -1,0 +1,42 @@
+openapi: 3.1.0
+info:
+    title: TODO API
+    description: Application Interface Definition
+    version: 0.0.1
+
+servers:
+    - url: http://localhots:8080
+      description: local server
+
+paths:
+    /backlog:
+        get:
+            summary: Get backlog
+            operationId: getBacklog
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                items:
+                                    $ref: "#/components/schemas/Backlog"
+components:
+    schemas:
+        Backlog:
+            type: object
+            properties:
+                id:
+                    type: integer
+                title:
+                    type: string
+                description:
+                    type: string
+                position:
+                    type: integer
+            required:
+                - id
+                - title
+                - description
+                - position

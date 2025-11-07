@@ -17,6 +17,18 @@ services:
     volumes:
       - todo-mysql:/var/lib/mysql
 
+  openapi-generator:
+    image: "openapitools/openapi-generator-cli:v7.17.0"
+    container_name: "openapi-generator"
+    working_dir: "/generator"
+    volumes:
+      # host側: openapi.ymlの相対パス
+      - ../openapi:/generator
+
+      # openapi codegenの出力先
+      # host側: containerの形式でcodegenがsrc/から出力される為、host側はdemo/までにする
+      - ../backend/todo:/local/backend
+
 volumes:
   todo-mysql:
     name: todo-mysql
