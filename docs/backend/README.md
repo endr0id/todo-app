@@ -1,5 +1,20 @@
 # backend 構成
 
+## API IF 追加時
+
+openapi.yml を更新したら下記のコマンドで data class(DTO)とコントローラーを自動生成すること
+
+```bash
+# 下記の二つをまとめて実行
+make code-gen
+
+# data class(DTO) のみ生成
+make code-gen-model
+
+# controller のみ生成
+make code-gen-api
+```
+
 ## DB 構成追加
 
 > [!CAUTION]  
