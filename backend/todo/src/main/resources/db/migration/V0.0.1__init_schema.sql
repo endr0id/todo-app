@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS columns (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
--- デフォルト列の挿入
+-- デフォルトデータ 挿入
 INSERT IGNORE INTO columns (title, description, position) VALUES
     ('TODO', 'Default column', 1),
     ('In Progress', 'Default column', 2),
