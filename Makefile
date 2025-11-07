@@ -25,3 +25,13 @@ code-gen-model:
 		--global-property=models \
 		--additional-properties=dataClasses=true,serializationLibrary=jackson \
 		--model-package=com.example.todo.generated.model
+
+code-gen-api:
+	docker compose -f $(COMPOSE_FILE) run --rm openapi-generator \
+		generate \
+		-g kotlin-spring \
+		-i /generator/openapi.yml \
+		-o /local/backend/ \
+		--global-property=apis \
+		--additional-properties=useSpringBoot3=true,interfaceOnly=true,reactive=false,skipDefaultInterface=true \
+		--api-package=com.example.todo.generated.api \
