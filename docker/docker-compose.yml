@@ -1,0 +1,34 @@
+version: "3.8"
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: todo_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: todo
+      MYSQL_USER: local_user
+      MYSQL_PASSWORD: password
+      TZ: "Asia/Tokyo"
+    ports:
+      - "3306:3306"
+    command: --default-authentication-plugin=mysql_native_password
+    volumes:
+      - todo-mysql:/var/lib/mysql
+
+  openapi-generator:
+    image: "openapitools/openapi-generator-cli:v7.17.0"
+    container_name: "openapi-generator"
+    working_dir: "/generator"
+    volumes:
+      # host側: openapi.ymlの相対パス
+      - ../openapi:/generator
+
+      # openapi codegenの出力先
+      # host側: containerの形式でcodegenがsrc/から出力される為、host側はdemo/までにする
+      - ../backend/todo:/local/backend
+
+volumes:
+  todo-mysql:
+    name: todo-mysql
