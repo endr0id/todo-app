@@ -1,7 +1,7 @@
 COMPOSE_FILE = ./docker/docker-compose.yml
 
 db:
-	cd docker && docker compose up -d
+	cd docker && docker compose up -d mysql
 
 	# DB 起動待ち
 	until docker exec todo_db mysqladmin ping --silent; do \
