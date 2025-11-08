@@ -24,5 +24,15 @@ paths:
                                     $ref: "#/components/schemas/BacklogResponse"
 components:
     schemas:
+        UnexpectedError:
+            $ref: "./schemas/exception/UnExpectedError.yml"
         BacklogResponse:
-            $ref: "./schemas/backlog/BacklogResponse.yml"
+            $ref: "./schemas/features/backlog/BacklogResponse.yml"
+
+    responses:
+        UnexpectedError:
+            description: Unexpected error
+            content:
+                application/json:
+                    schema:
+                        $ref: "#/components/schemas/UnexpectedError"
