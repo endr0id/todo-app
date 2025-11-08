@@ -1,5 +1,32 @@
 # backend 構成
 
+## ディレクトリ構成
+```bash
+kotlin/com/example/todo/
+├── core/ # アプリ全体で共有する機能や定義(未定)
+│   ├── errors/    # エラーハンドラー
+│   ├── constants/ # 定数(グローバル)
+│   └── utils/     # ユーティリティクラスや関数
+│
+├── shared/ # 共通機能ごとのディレクトリ(未定)
+│
+├── controller/
+│   └── controller.kt
+│
+└── features/ # 機能毎のディレクトリ
+    └── feature_name/
+        │
+        ├── data/ # データ層
+        │   ├── models/       # Entity
+        │   └── repositories/ # DB操作関連
+        │       ├── repositories.kt     # Repository interface
+        │       └── repositoriesImpl.kt # Repository実装
+        │
+        └── application/ # サービス層
+            └── Service.kt # Service実装
+
+```
+
 ## API IF 追加時
 
 openapi.yml を更新したら下記のコマンドで data class(DTO)とコントローラーを自動生成すること
