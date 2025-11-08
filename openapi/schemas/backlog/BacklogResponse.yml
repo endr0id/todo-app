@@ -8,11 +8,11 @@ properties:
     description:
         type: string
         description: カラムの説明
+        nullable: true
     position:
         type: integer
         description: カラムの並び順
 required:
     - id
     - title
-    - description
     - position

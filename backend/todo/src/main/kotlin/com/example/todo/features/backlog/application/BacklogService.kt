@@ -11,7 +11,7 @@ class BacklogService(private val backlogrepository: BacklogRepository) {
             BacklogResponse(
                 id = entity.id.toInt(),
                 title = entity.title,
-                description = entity.description.orEmpty(),
+                description = entity.description,
                 position = entity.position
             )
         }

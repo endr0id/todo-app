@@ -6,8 +6,8 @@
 | ------------ | ------------- | ------------- | ------------- |
 | **id** | **kotlin.Int** |  |  |
 | **title** | **kotlin.String** | カラムタイトル |  |
-| **description** | **kotlin.String** | カラムの説明 |  |
 | **position** | **kotlin.Int** | カラムの並び順 |  |
+| **description** | **kotlin.String** | カラムの説明 |  [optional] |
 
 
 
