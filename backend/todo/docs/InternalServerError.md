@@ -1,5 +1,5 @@
 
-# UnexpectedError
+# InternalServerError
 
 ## Properties
 | Name | Type | Description | Notes |

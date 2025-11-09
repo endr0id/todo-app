@@ -26,7 +26,7 @@ import com.fasterxml.jackson.annotation.JsonProperty
  */
 
 
-data class UnexpectedError (
+data class InternalServerError (
 
     /* HTTP status code */
     @get:JsonProperty("statusCode")
