@@ -43,3 +43,6 @@ code-gen-api:
 code-gen:
 	make code-gen-model
 	make code-gen-api
+
+jooq-code-gen:
+	cd backend/todo/ && ./gradlew generateMainJooq
