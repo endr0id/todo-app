@@ -22,6 +22,9 @@ paths:
                                 type: array
                                 items:
                                     $ref: "#/components/schemas/BacklogResponse"
+                "500":
+                    $ref: "#/components/responses/InternalServerError"
+
 components:
     schemas:
         BacklogResponse:

@@ -6,6 +6,7 @@
 package com.example.todo.generated.api
 
 import com.example.todo.generated.model.BacklogResponse
+import com.example.todo.generated.model.InternalServerError
 import io.swagger.v3.oas.annotations.*
 import io.swagger.v3.oas.annotations.enums.*
 import io.swagger.v3.oas.annotations.media.*
@@ -43,7 +44,8 @@ interface BacklogApi {
         operationId = "getBacklog",
         description = """""",
         responses = [
-            ApiResponse(responseCode = "200", description = "OK", content = [Content(array = ArraySchema(schema = Schema(implementation = BacklogResponse::class)))])
+            ApiResponse(responseCode = "200", description = "OK", content = [Content(array = ArraySchema(schema = Schema(implementation = BacklogResponse::class)))]),
+            ApiResponse(responseCode = "500", description = "Internal Server Error", content = [Content(schema = Schema(implementation = InternalServerError::class))])
         ]
     )
     @RequestMapping(
