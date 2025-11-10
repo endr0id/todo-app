@@ -1,22 +1,32 @@
 package com.example.todo.features.backlog.data.repository
 
 import com.example.todo.features.backlog.data.model.ColumnEntity
-import org.springframework.jdbc.core.JdbcTemplate
+import org.jooq.DSLContext
 import org.springframework.stereotype.Repository
+import org.jooq.generated.tables.Columns
 
 @Repository
 class BacklogRepositoryImpl(
-    private val jdbcTemplate: JdbcTemplate
+    private val dsl: DSLContext
 ) : BacklogRepository {
     override fun findAllColumns(): List<ColumnEntity> {
-        val sql = "SELECT id, title, description, position FROM columns ORDER BY position ASC"
-        return jdbcTemplate.query(sql) { rs, _ ->
-            ColumnEntity(
-                id = rs.getLong("id"),
-                title = rs.getString("title"),
-                description = rs.getString("description"),
-                position = rs.getInt("position")
-            )
-        }
+        val columns = Columns.COLUMNS
+
+        return dsl.select(
+            columns.ID,
+            columns.TITLE,
+            columns.DESCRIPTION,
+            columns.POSITION
+        )
+            .from(columns)
+            .orderBy(columns.POSITION.asc())
+            .fetch { record ->
+                ColumnEntity(
+                    id = record.get(columns.ID) ?: 0L,
+                    title = record.get(columns.TITLE),
+                    description = record.get(columns.DESCRIPTION),
+                    position = record.get(columns.POSITION) ?: 0
+                )
+            }
     }
 }

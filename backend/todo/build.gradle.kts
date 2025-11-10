@@ -105,3 +105,6 @@ jooq {
 		}
 	}
 }
+
+// jooq自動生成ディレクトリを識別させる
+sourceSets["main"].java.srcDir("src/main/schemas")
