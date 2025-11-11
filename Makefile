@@ -40,6 +40,14 @@ code-gen-api:
 		--api-package=com.example.todo.generated.api \
 		--model-package=com.example.todo.generated.model
 
+client-code-gen:
+	docker compose -f $(COMPOSE_FILE) run --rm openapi-generator \
+		generate \
+		-g typescript-fetch \
+		-i /generator/openapi.yml \
+		-o /local/frontend/api \
+		--global-property=models
+
 code-gen:
 	make code-gen-model
 	make code-gen-api
