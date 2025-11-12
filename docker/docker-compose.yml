@@ -28,6 +28,7 @@ services:
       # openapi codegenの出力先
       # host側: containerの形式でcodegenがsrc/から出力される為、host側はdemo/までにする
       - ../backend/todo:/local/backend
+      - ../frontend/src/types:/local/frontend
 
 volumes:
   todo-mysql:

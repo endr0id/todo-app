@@ -23,8 +23,8 @@ import com.fasterxml.jackson.annotation.JsonProperty
  *
  * @param id 
  * @param title カラムタイトル
- * @param description カラムの説明
  * @param position カラムの並び順
+ * @param description カラムの説明
  */
 
 
@@ -37,13 +37,13 @@ data class BacklogResponse (
     @get:JsonProperty("title")
     val title: kotlin.String,
 
-    /* カラムの説明 */
-    @get:JsonProperty("description")
-    val description: kotlin.String,
-
     /* カラムの並び順 */
     @get:JsonProperty("position")
-    val position: kotlin.Int
+    val position: kotlin.Int,
+
+    /* カラムの説明 */
+    @get:JsonProperty("description")
+    val description: kotlin.String? = null
 
 ) {
 

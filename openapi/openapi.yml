@@ -22,7 +22,20 @@ paths:
                                 type: array
                                 items:
                                     $ref: "#/components/schemas/BacklogResponse"
+                "500":
+                    $ref: "#/components/responses/InternalServerError"
+
 components:
     schemas:
         BacklogResponse:
-            $ref: "./schemas/backlog/BacklogResponse.yml"
+            $ref: "./schemas/features/backlog/BacklogResponse.yml"
+        InternalServerError:
+            $ref: "./schemas/error/InternalServerError.yml"
+
+    responses:
+        InternalServerError:
+            description: Internal Server Error
+            content:
+                application/json:
+                    schema:
+                        $ref: "#/components/schemas/InternalServerError"
