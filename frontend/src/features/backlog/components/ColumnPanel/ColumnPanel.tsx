@@ -6,6 +6,11 @@ import {
   columnPanelWrapper,
 } from "./ColumnPanel.style";
 
+interface ColumnPanelProps {
+  title: string;
+  children: React.ReactNode;
+}
+
 const ColumnPanelHeader = ({ title }: { title: string }) => {
   return <div className={columnPanelHeaderRecipe}>{title}</div>;
 };
@@ -24,10 +29,10 @@ const ColumnPanelBottom = () => {
   );
 };
 
-const ColumnPanel = ({ children }: { children: React.ReactNode }) => {
+const ColumnPanel = ({ title, children }: ColumnPanelProps) => {
   return (
     <div className={columnPanelWrapper}>
-      <ColumnPanelHeader title="Title" />
+      <ColumnPanelHeader title={title} />
       <ColumnPanelContents>{children}</ColumnPanelContents>
       <ColumnPanelBottom />
     </div>
