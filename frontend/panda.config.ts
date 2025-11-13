@@ -12,7 +12,7 @@ export default defineConfig({
 
   globalCss: {
     "html body": {
-      backgroundColor: "#222222",
+      backgroundColor: "black",
       color: "white",
     },
   },
