@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useBacklog } from "../../features/backlog/api/getBacklog";
-import ColumnPanel from "../../features/backlog/components/ColumnPanel/ColumnPanel";
+import Board from "../../features/backlog/components/Board";
+import Card from "../../features/backlog/components/Card";
 import BacklogLayout from "../../layouts/backlog/BacklogLayout";
 
 export const Route = createFileRoute("/backlog/")({
@@ -21,9 +22,13 @@ function RouteComponent() {
       <BacklogLayout>
         {data ? (
           data.map((backlog, index) => (
-            <ColumnPanel key={index} title={backlog.title}>
-              context
-            </ColumnPanel>
+            <Board
+              key={index}
+              title={backlog.title}
+              description={backlog.description}
+            >
+              <Card />
+            </Board>
           ))
         ) : (
           <div>undefined</div>
