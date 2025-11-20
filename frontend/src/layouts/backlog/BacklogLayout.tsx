@@ -1,22 +1,22 @@
 import { css } from "../../../styled-system/css";
 
-const backlogWrapperRecipe = css({
+const backlogContainerRecipe = css({
   display: "flex",
-  direction: "column",
+  flexDirection: "column",
   justifyContent: "center",
   alignItems: "center",
   height: "100vh",
 });
 
-const cardRecipe = css({
+const cardContainerRecipe = css({
   display: "flex",
   gap: "5px",
 });
 
 const BacklogLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className={backlogWrapperRecipe}>
-      <div className={cardRecipe}>{children}</div>
+    <div className={backlogContainerRecipe}>
+      <div className={cardContainerRecipe}>{children}</div>
     </div>
   );
 };
