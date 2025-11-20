@@ -1,13 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
+import { fetchBacklog } from "../api/fetchBacklog";
 import type { BacklogResponse } from "../../../types/api/models/BacklogResponse";
 
 export const useBacklog = () => {
-  const result = useQuery<BacklogResponse[]>({
+  return useQuery<BacklogResponse[]>({
     queryKey: ["backlog"],
-    queryFn: async () => {
-      const res = await fetch("http://localhost:8080/backlog");
-      return res.json();
-    },
+    queryFn: fetchBacklog,
   });
-  return { ...result };
 };

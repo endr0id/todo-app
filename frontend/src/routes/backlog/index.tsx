@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useBacklog } from "../../features/backlog/api/getBacklog";
 import Board from "../../features/backlog/components/Board";
 import Card from "../../features/backlog/components/Card";
+import { useBacklog } from "../../features/backlog/hooks/useBacklog";
 import BacklogLayout from "../../layouts/backlog/BacklogLayout";
 
 export const Route = createFileRoute("/backlog/")({
