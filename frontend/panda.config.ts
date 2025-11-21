@@ -14,6 +14,7 @@ export default defineConfig({
     "html body": {
       backgroundColor: "black",
       color: "white",
+      fontFamily: "NotoSansJP",
     },
   },
 
@@ -29,6 +30,65 @@ export default defineConfig({
         },
       },
     },
+  },
+
+  globalFontface: {
+    NotoSansJP: [
+      {
+        src: 'url(/public/fonts/static/NotoSansJP-Thin.ttf) format("ttf")',
+        fontWeight: 100,
+        fontStyle: "normal",
+        fontDisplay: "swap",
+      },
+      {
+        src: 'url(/public/fonts/static/NotoSansJP-ExtraLight.ttf) format("ttf")',
+        fontWeight: 200,
+        fontStyle: "normal",
+        fontDisplay: "swap",
+      },
+      {
+        src: 'url(/public/fonts/static/NotoSansJP-Light.ttf) format("ttf")',
+        fontWeight: 300,
+        fontStyle: "normal",
+        fontDisplay: "swap",
+      },
+      {
+        src: 'url(/public/fonts/static/NotoSansJP-Regular.ttf) format("ttf")',
+        fontWeight: 400,
+        fontStyle: "normal",
+        fontDisplay: "swap",
+      },
+      {
+        src: 'url(/public/fonts/static/NotoSansJP-Medium.ttf) format("ttf")',
+        fontWeight: 500,
+        fontStyle: "normal",
+        fontDisplay: "swap",
+      },
+      {
+        src: 'url(/public/fonts/static/NotoSansJP-SemiBold.ttf) format("ttf")',
+        fontWeight: 600,
+        fontStyle: "normal",
+        fontDisplay: "swap",
+      },
+      {
+        src: 'url(/public/fonts/static/NotoSansJP-Bold.ttf) format("ttf")',
+        fontWeight: 700,
+        fontStyle: "normal",
+        fontDisplay: "swap",
+      },
+      {
+        src: 'url(/public/fonts/static/NotoSansJP-ExtraBold.ttf) format("ttf")',
+        fontWeight: 800,
+        fontStyle: "normal",
+        fontDisplay: "swap",
+      },
+      {
+        src: 'url(/public/fonts/static/NotoSansJP-Black.ttf) format("ttf")',
+        fontWeight: 900,
+        fontStyle: "normal",
+        fontDisplay: "swap",
+      },
+    ],
   },
 
   // The output directory for your css system
